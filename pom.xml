@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>by.gsu</groupId>
+	<artifactId>RoadStatusService</artifactId>
+	<version>1.0</version>
+
+	<name>RoadStatusService</name>
+	<description>RoadStatusService Project domain</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<url>http://central.maven.org/maven2/</url>
+
+		</repository>
+	</repositories>
+
+
+
+	<dependencyManagement>
+
+
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+	</dependencies>
+	</dependencyManagement>
+
+
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.6.1</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+
+
+	<packaging>pom</packaging>
+	<modules>
+		
+		<module>RoadStatusService-impl</module>
+
+		<module>RoadStatusService-client</module>
+	</modules>
+</project>

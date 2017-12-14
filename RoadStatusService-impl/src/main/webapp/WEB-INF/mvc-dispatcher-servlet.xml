@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+
+	<!-- так должен выглядеть адекватный конфиг спринга -->
+
+	<!-- опишем контекст поиска компонентов (базовый пакет) -->
+	<context:component-scan base-package="by.gsu.RoadStatusService" />
+
+	<!-- тут напишем спрингу чтобы он автоматом шаблонизировал пути к вьюхам 
+		приложения -->
+
+	<!-- тоесть что бы не писать каждый раз полный путь и расширение страниц... 
+		пишем только расположение -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!--заведем себе в Springe свои источник данных -->
+	<!-- <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"> -->
+	<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+	<!-- <property name="url" value="jdbc:mysql://localhost:3306/sklad_ntck" 
+		/> -->
+	<!-- <property name="username" value="root" /> -->
+	<!-- <property name="password" value="a75130371997rospu" /> -->
+	<!-- </bean> -->
+
+	<!-- подключим HIBERNATE -->
+	<!-- <bean id="hibernate" -->
+	<!-- class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> -->
+	<!-- <property name="dataSource" ref="datasource" /> -->
+
+	<!-- <property name="annotatedClasses"> -->
+	<!-- <list> -->
+	<!-- <value>by.ntck.sten.model.User</value> -->
+	<!-- <value>by.ntck.sten.model.Kladovshik</value> -->
+	<!-- <value>by.ntck.sten.model.Sklad</value> -->
+	<!-- <value>by.ntck.sten.model.HistoryOperation</value> -->
+	<!-- <value>by.ntck.sten.model.SkladH</value> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- <property name="hibernateProperties"> -->
+	<!-- <props> -->
+	<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+	<!-- <prop key="hibernate.enable_lazy_load_no_trans">true</prop> -->
+	<!-- <prop key="hibernate.hbm2ddl.import_file">classpath:/import.sql</prop> -->
+	<!-- <prop key="hibernate.show_sql">true</prop> -->
+	<!-- <prop key="hibernate.format_sql">true</prop> -->
+
+	<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> -->
+
+	<!-- </props> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<!--отдаём управление транзакциями СПРИНГУ) -->
+	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
+
+
+
+	<!--опишем менеджер транзакций -->
+
+
+
+
+
+
+
+	<!-- Configure to plugin JSON as request and response in method handler -->
+
+
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+
+
+	<!--здесь будем описывать бины(у тебя модели) -->
+
+	<!-- разрешаем использовать аннотации -->
+	<!-- <mvc:annotation-driven /> -->
+
+	<mvc:annotation-driven>
+		<!-- <mvc:message-converters> -->
+		<!-- <bean class="org.springframework.http.converter.StringHttpMessageConverter" 
+			/> -->
+		<!-- <bean -->
+		<!-- class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" 
+			/> -->
+		<!-- </mvc:message-converters> -->
+	</mvc:annotation-driven>
+
+
+
+	<!-- передаем управление диспетчерезацией - Spring -->
+	<mvc:default-servlet-handler />
+
+	<context:annotation-config />
+
+
+
+
+	<!-- <bean id="gsonHttpMessageConverter" -->
+	<!-- class="org.springframework.http.converter.json.GsonHttpMessageConverter" 
+		/> -->
+
+	<!-- <bean id="handlerAdapter" -->
+	<!-- class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"> -->
+
+	<!-- <property name="messageConverters"> -->
+	<!-- <list> -->
+	<!-- <ref bean="gsonHttpMessageConverter" /> -->
+	<!-- <bean -->
+	<!-- class="org.springframework.http.converter.ByteArrayHttpMessageConverter" 
+		/> -->
+	<!-- <bean -->
+	<!-- class="org.springframework.http.converter.xml.SourceHttpMessageConverter" 
+		/> -->
+	<!-- <bean class="org.springframework.http.converter.FormHttpMessageConverter" 
+		/> -->
+	<!-- <bean -->
+	<!-- class="org.springframework.http.converter.StringHttpMessageConverter" 
+		/> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+
+
+	<!-- Configure to plugin JSON as request and response in method handler -->
+	<!-- <bean -->
+	<!-- class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"> -->
+	<!-- <property name="messageConverters"> -->
+	<!-- <list> -->
+	<!-- <ref bean="jsonMessageConverter" /> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<!-- <bean id="jsonMessageConverter" -->
+	<!-- class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" 
+		/> -->
+
+
+
+</beans>
