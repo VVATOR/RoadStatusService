@@ -22,7 +22,6 @@ public interface IPictureRepository {
 	public List<Picture> GetListPicture();
 	
 	public Picture methodGetPicture(long id);
-
 	
 	public void methodPostPicture(Picture picture);
 

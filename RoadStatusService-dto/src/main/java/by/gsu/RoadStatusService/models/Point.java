@@ -2,9 +2,14 @@ package by.gsu.RoadStatusService.models;
 
 import java.io.Serializable;
 
-public class Point implements Serializable{
+public class Point implements Serializable {
 	private double x;
 	private double y;
+
+	public Point() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Point(double x, double y) {
 		super();
@@ -16,12 +21,12 @@ public class Point implements Serializable{
 		return x;
 	}
 
-	public void setX(double x) {
-		this.x = x;
-	}
-
 	public double getY() {
 		return y;
+	}
+
+	public void setX(double x) {
+		this.x = x;
 	}
 
 	public void setY(double y) {
@@ -39,6 +44,4 @@ public class Point implements Serializable{
 		return builder.toString();
 	}
 
-	
-	
 }

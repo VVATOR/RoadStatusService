@@ -1,8 +1,9 @@
 package by.gsu.RoadStatusService.controllers;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,11 +12,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import by.gsu.RoadStatusService.models.Picture;
 import by.gsu.RoadStatusService.models.Point;
@@ -24,6 +25,8 @@ import by.gsu.RoadStatusService.models.Point;
 @RequestMapping("/")
 public class RoadStatusController implements SEIPicture {
 
+	
+	private static AtomicLong id = new AtomicLong(10);
 	private List<Picture> store = new ArrayList<Picture>() {
 		{
 			add(new Picture(1));
@@ -41,10 +44,10 @@ public class RoadStatusController implements SEIPicture {
 		return "index";
 	}
 
-	@Override
+	
 	@RequestMapping(value = "picture", method = RequestMethod.GET)
-	public ResponseEntity<Picture> methodGetListPicture(HttpServletResponse response) {
-		return (ResponseEntity<Picture>) store;
+	public  ResponseEntity<List<Picture>> methodGetListPictures(HttpServletResponse response) {
+		return ResponseEntity.ok(store);
 	}
 
 	@RequestMapping(value = "picture/{id}", method = RequestMethod.GET)
@@ -58,12 +61,41 @@ public class RoadStatusController implements SEIPicture {
 	}
 
 	@RequestMapping(value = "picture", method = RequestMethod.POST)
-	public ResponseEntity<Void> methodPostPicture(@RequestParam Picture picture, final HttpServletResponse response) {
-
+	public ResponseEntity<Long> methodPostPicture(@RequestBody Picture picture, final HttpServletResponse response) {
+		long idTmp = id.incrementAndGet();		
+		picture.setId(idTmp);
 		store.add(picture);
-		return (ResponseEntity<Void>) ResponseEntity.ok();
+		return (ResponseEntity<Long>) ResponseEntity.ok(idTmp);
 	}
 
+	@Override
+	public ResponseEntity<Void> methodPutPicture(Picture picture, HttpServletResponse response) {
+		for (int index = 0; index < store.size(); index++) {
+			if (store.get(index).getId() == picture.getId()) {
+				store.set(index, picture);
+				return (ResponseEntity<Void>) ResponseEntity.ok();
+			}
+		}
+		return (ResponseEntity<Void>) ResponseEntity.notFound();
+	}
+	
+	@Override
+	@RequestMapping(value = "picture/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> methodDeletePicture(@PathVariable long id, HttpServletResponse response) {
+		for (Picture picture : store) {
+			if (picture.getId() == id) {
+				store.remove(picture);
+				return (ResponseEntity<Void>) ResponseEntity.ok();
+			}
+		}
+		return (ResponseEntity<Void>) ResponseEntity.noContent();
+	}
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "u", method = RequestMethod.GET)
 	public @ResponseBody Picture upload(final HttpServletResponse response) {
 		/*
@@ -98,27 +130,8 @@ public class RoadStatusController implements SEIPicture {
 		return store;
 	}
 
-	@Override
-	public ResponseEntity<Void> methodPutPicture(Picture picture, HttpServletResponse response) {
-		for (int index = 0; index < store.size(); index++) {
-			if (store.get(index).getId() == picture.getId()) {
-				store.set(index, picture);
-				return (ResponseEntity<Void>) ResponseEntity.ok();
-			}
-		}
-		return (ResponseEntity<Void>) ResponseEntity.notFound();
-	}
+	
 
-	@Override
-	@RequestMapping(value = "picture/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> methodDeletePicture(@PathVariable long id, HttpServletResponse response) {
-		for (Picture picture : store) {
-			if (picture.getId() == id) {
-				store.remove(picture);
-				return (ResponseEntity<Void>) ResponseEntity.ok();
-			}
-		}
-		return (ResponseEntity<Void>) ResponseEntity.noContent();
-	}
+	
 
 }

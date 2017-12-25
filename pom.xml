@@ -31,18 +31,18 @@
 
 
 
-	<dependencies>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.9.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
-		</dependency>
-	</dependencies>
+		<dependencies>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.9.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.25</version>
+			</dependency>
+		</dependencies>
 	</dependencyManagement>
 
 
@@ -68,9 +68,8 @@
 
 	<packaging>pom</packaging>
 	<modules>
-		
-		<module>RoadStatusService-impl</module>
-
+		<module>RoadStatusService-dto</module>
 		<module>RoadStatusService-client</module>
+		<module>RoadStatusService-impl</module>
 	</modules>
 </project>

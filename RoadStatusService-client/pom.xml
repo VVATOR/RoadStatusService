@@ -7,15 +7,25 @@
 
 
 	<parent>
-	<groupId>by.gsu</groupId>
-	<artifactId>RoadStatusService</artifactId>
-	<version>1.0</version>
+		<groupId>by.gsu</groupId>
+		<artifactId>RoadStatusService</artifactId>
+		<version>1.0</version>
 	</parent>
 
 	<dependencies>
 
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.0.1</version>
+		</dependency>
 
-
+		<dependency>
+			<groupId>by.gsu</groupId>
+			<artifactId>RoadStatusService-dto</artifactId>
+			<version>1.0</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
 		<dependency>
@@ -30,12 +40,12 @@
 			<artifactId>slf4j-api</artifactId>
 
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>by.gsu</groupId> -->
-<!-- 			<artifactId>RoadStatusService-impl</artifactId> -->
-<!-- 			<version>1.0</version> -->
-			
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>by.gsu</groupId> -->
+		<!-- <artifactId>RoadStatusService-impl</artifactId> -->
+		<!-- <version>1.0</version> -->
+
+		<!-- </dependency> -->
 
 
 

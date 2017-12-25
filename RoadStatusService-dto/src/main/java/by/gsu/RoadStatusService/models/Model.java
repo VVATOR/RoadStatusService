@@ -19,6 +19,11 @@ public abstract class Model implements Serializable {
 		this.id = id;
 	}
 
+	public Model() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Model(long id) {
 		super();
 		this.id = id;

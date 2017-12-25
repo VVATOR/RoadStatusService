@@ -18,6 +18,12 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>by.gsu</groupId>
+			<artifactId>RoadStatusService-dto</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 		<!-- Jackson JSON Mapper -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
