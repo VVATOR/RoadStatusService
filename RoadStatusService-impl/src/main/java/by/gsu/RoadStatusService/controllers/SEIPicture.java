@@ -31,7 +31,7 @@ public interface SEIPicture {
 	public ResponseEntity<Long> methodPostPicture(@RequestBody Picture picture, final HttpServletResponse response);
 
 	@RequestMapping(value = "picture", method = RequestMethod.PUT)
-	public ResponseEntity<Void> methodPutPicture(@RequestParam Picture picture, final HttpServletResponse response);
+	public ResponseEntity<Long> methodPutPicture(@RequestParam Picture picture, final HttpServletResponse response);
 
 	@RequestMapping(value = "picture/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> methodDeletePicture(long id, HttpServletResponse response);

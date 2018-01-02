@@ -57,7 +57,7 @@ public class RoadStatusController implements SEIPicture {
 				return ResponseEntity.ok(picture);
 			}
 		}
-		return (ResponseEntity<Picture>) ResponseEntity.notFound();
+		return ResponseEntity.notFound().build();
 	}
 
 	@RequestMapping(value = "picture", method = RequestMethod.POST)
@@ -65,18 +65,26 @@ public class RoadStatusController implements SEIPicture {
 		long idTmp = id.incrementAndGet();		
 		picture.setId(idTmp);
 		store.add(picture);
-		return (ResponseEntity<Long>) ResponseEntity.ok(idTmp);
+		//return (ResponseEntity<Long>) ResponseEntity.ok(idTmp);
+		return ResponseEntity.ok(idTmp);
 	}
 
-	@Override
-	public ResponseEntity<Void> methodPutPicture(Picture picture, HttpServletResponse response) {
-		for (int index = 0; index < store.size(); index++) {
+
+
+	@RequestMapping(value = "picture", method = RequestMethod.PUT)
+	public ResponseEntity<Long> methodPutPicture(@RequestParam Picture picture, final HttpServletResponse response){
+	long idTmp = id.incrementAndGet();		
+	picture.setId(idTmp);
+	store.add(picture);
+	return ResponseEntity.ok(idTmp);
+	//public ResponseEntity<Void> methodPutPicture(Picture picture, HttpServletResponse response) {
+	/*	for (int index = 0; index < store.size(); index++) {
 			if (store.get(index).getId() == picture.getId()) {
 				store.set(index, picture);
 				return (ResponseEntity<Void>) ResponseEntity.ok();
 			}
 		}
-		return (ResponseEntity<Void>) ResponseEntity.notFound();
+		return (ResponseEntity<Void>) ResponseEntity.notFound();*/
 	}
 	
 	@Override
@@ -85,10 +93,10 @@ public class RoadStatusController implements SEIPicture {
 		for (Picture picture : store) {
 			if (picture.getId() == id) {
 				store.remove(picture);
-				return (ResponseEntity<Void>) ResponseEntity.ok();
+				return ResponseEntity.noContent().build();
 			}
 		}
-		return (ResponseEntity<Void>) ResponseEntity.noContent();
+		  return ResponseEntity.notFound().build();
 	}
 	
 	
