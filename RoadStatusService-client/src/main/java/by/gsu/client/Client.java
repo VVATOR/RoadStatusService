@@ -24,8 +24,8 @@ public class Client {
 		GET, POST, PUT, DELETE;
 	}
 
-	// private String host = "https://road-status-service-impl.herokuapp.com";
-	private String host = "http://localhost:8080/RoadStatusService-impl";
+	 private String host = "https://road-status-service-impl.herokuapp.com";
+	//private String host = "http://localhost:8080/RoadStatusService-impl";
 
 	public String getHost() {
 		return host;

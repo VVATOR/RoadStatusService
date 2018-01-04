@@ -11,12 +11,15 @@ public class Point implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	public Point(double x, double y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
 
+	
+	
 	public double getX() {
 		return x;
 	}
