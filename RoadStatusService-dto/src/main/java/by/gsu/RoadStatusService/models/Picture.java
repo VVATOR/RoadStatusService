@@ -77,17 +77,23 @@ public class Picture extends Model implements Serializable {
         this.point = point;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Picture [name=");
-        builder.append(name);
-        builder.append(", description=");
-        builder.append(description);
-        builder.append(", point=");
-        builder.append(point);
-        builder.append("]");
-        return builder.toString();
-    }
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Picture [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", data=");
+		builder.append(data);
+		builder.append(", point=");
+		builder.append(point);
+		builder.append("]");
+		return builder.toString();
+	}
+
+
 
 }
