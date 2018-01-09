@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import by.gsu.RoadStatusService.models.Picture;
 import by.gsu.RoadStatusService.models.Point;
 
-public class ClientInMemory {
+public class ClientInMemory  implements IRoadStatusClient{
 	private static final Logger LOG = LoggerFactory.getLogger(ClientInMemory.class);
 	private static AtomicLong id = new AtomicLong(10);
 
