@@ -24,8 +24,8 @@ import by.gsu.RoadStatusService.models.Point;
 public class Client implements IRoadStatusClient {
     private static final Logger LOG = LoggerFactory.getLogger(Client.class);
 
-    private String host = "http://localhost:8080/RoadStatusService-impl";
-    // private String host = "http://localhost:8080/RoadStatusService-impl";
+  //  private String host = "http://localhost:8080/RoadStatusService-impl";
+    private String host = "https://road-status-service-impl.herokuapp.com";
 
     public String getHost() {
         return host;

@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import by.gsu.RoadStatusService.models.Picture;
 import by.gsu.RoadStatusService.models.Point;
 
-@Controller
-@RequestMapping("/")
+//@Controller
+//@RequestMapping("/")
 public class RoadStatusController implements SEIPicture {
 
     public static final Logger LOG = LoggerFactory.getLogger(RoadStatusController.class);
@@ -41,17 +41,17 @@ public class RoadStatusController implements SEIPicture {
         }
     };
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+ //   @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "index";
     }
 
-    @RequestMapping(value = "picture", method = RequestMethod.GET)
+ //   @RequestMapping(value = "picture", method = RequestMethod.GET)
     public ResponseEntity<List<Picture>> methodGetListPictures(HttpServletResponse response) {
         return ResponseEntity.ok(store);
     }
 
-    @RequestMapping(value = "picture/{id}", method = RequestMethod.GET)
+ //   @RequestMapping(value = "picture/{id}", method = RequestMethod.GET)
     public ResponseEntity<Picture> methodGetPicture(@PathVariable long id, final HttpServletResponse response) {
         for (Picture picture : store) {
             if (picture.getId() == id) {
@@ -61,7 +61,7 @@ public class RoadStatusController implements SEIPicture {
         return ResponseEntity.notFound().build();
     }
 
-    @RequestMapping(value = "picture", method = RequestMethod.POST)
+ //   @RequestMapping(value = "picture", method = RequestMethod.POST)
     public ResponseEntity<Long> methodPostPicture(@RequestBody Picture picture, final HttpServletResponse response) {
         long idTmp = id.incrementAndGet();
         picture.setId(idTmp);
@@ -71,7 +71,7 @@ public class RoadStatusController implements SEIPicture {
         return ResponseEntity.ok(idTmp);
     }
 
-    @RequestMapping(value = "picture", method = RequestMethod.PUT)
+ //   @RequestMapping(value = "picture", method = RequestMethod.PUT)
     public ResponseEntity<Long> methodPutPicture(@RequestParam Picture picture, final HttpServletResponse response) {
         LOG.info("{}", picture);
         for (int i = 0; i < store.size(); i++) {
@@ -98,8 +98,8 @@ public class RoadStatusController implements SEIPicture {
          */
     }
 
-    @Override
-    @RequestMapping(value = "picture/{id}", method = RequestMethod.DELETE)
+ //   @Override
+ //   @RequestMapping(value = "picture/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> methodDeletePicture(@PathVariable long id, HttpServletResponse response) {
         for (Picture picture : store) {
             if (picture.getId() == id) {
@@ -110,7 +110,7 @@ public class RoadStatusController implements SEIPicture {
         return ResponseEntity.notFound().build();
     }
 
-    @RequestMapping(value = "u", method = RequestMethod.GET)
+ //   @RequestMapping(value = "u", method = RequestMethod.GET)
     public @ResponseBody Picture upload(final HttpServletResponse response) {
         /*
          * response.setHeader("Accept", "application/json"); response.setHeader("Content-Type", "application/json");
@@ -118,8 +118,8 @@ public class RoadStatusController implements SEIPicture {
         return new Picture(11, "aaa", "aaaaaaa", new Point(11, 22));
     }
 
-    @ResponseBody
-    @RequestMapping(value = "doc", method = RequestMethod.GET)
+  //  @ResponseBody
+  //  @RequestMapping(value = "doc", method = RequestMethod.GET)
     public void userDataSklad(final HttpServletRequest request, final HttpServletResponse response) {
         response.setHeader("Accept", "application/json");
         response.setHeader("Content-Type", "application/json");
@@ -136,8 +136,8 @@ public class RoadStatusController implements SEIPicture {
         }
     }
 
-    @RequestMapping(value = "list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
+  //  @RequestMapping(value = "list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  //  @ResponseBody
     public List<Picture> handleAllUserRequest(final HttpServletResponse response) {
         response.setHeader("Content-Type", "application/json");
         return store;
